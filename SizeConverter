@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Size Converter Online - Convert EU, US, UK Clothing & Shoe Sizes Instantly</title>
+    <meta name="description" content="Free online size converter for clothing and shoes. Instantly convert between EU, US, UK and international sizes for tops, bottoms, and footwear. Accurate size conversion tool for men and women.">
+    <meta name="keywords" content="size converter, clothing size converter, shoe size converter, EU to US size, UK to EU size, international sizing, men women size chart, clothing size chart, shoe size chart">
+    <meta name="author" content="Size Converter Online">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sizeconverter.online">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sizeconverter.online">
+    <meta property="og:title" content="Size Converter Online - Convert EU, US, UK Clothing & Shoe Sizes">
+    <meta property="og:description" content="Free online size converter for clothing and shoes. Instantly convert between EU, US, UK and international sizes.">
+    <meta property="og:image" content="https://sizeconverter.online/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sizeconverter.online">
+    <meta property="twitter:title" content="Size Converter Online - Convert EU, US, UK Clothing & Shoe Sizes">
+    <meta property="twitter:description" content="Free online size converter for clothing and shoes. Instantly convert between EU, US, UK and international sizes.">
+    <meta property="twitter:image" content="https://sizeconverter.online/twitter-image.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Size Converter Online",
+      "description": "Free online size converter for clothing and shoes. Convert between EU, US, UK and international sizes.",
+      "url": "https://sizeconverter.online",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Clothing size conversion",
+        "Shoe size conversion", 
+        "EU to US size conversion",
+        "UK to EU size conversion",
+        "International size charts"
+      ]
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .result-animation {
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .tab-inactive {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        
+        .convert-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .convert-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+        
+        .input-field {
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .input-field:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .title-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 font-sans">
+    <div class="container mx-auto px-6 py-12 max-w-6xl">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold title-gradient mb-6">
+                Size Converter Online
+            </h1>
+            <p class="text-2xl md:text-3xl text-gray-600 font-medium mb-4">
+                Convert clothing & shoe sizes instantly across all regions
+            </p>
+            <p class="text-lg text-gray-500 max-w-3xl mx-auto">
+                Free and accurate size conversion tool for EU, US, UK and international sizing systems. Perfect for online shopping and finding your perfect fit.
+            </p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="flex flex-wrap justify-center gap-4 mb-16">
+            <button onclick="showSection('tops')" id="tab-tops" class="tab-active px-8 py-4 rounded-full font-medium text-lg transition-all duration-300">
+                👕 Tops
+            </button>
+            <button onclick="showSection('bottoms')" id="tab-bottoms" class="tab-inactive px-8 py-4 rounded-full font-medium text-lg transition-all duration-300">
+                👖 Bottoms
+            </button>
+            <button onclick="showSection('shoes')" id="tab-shoes" class="tab-inactive px-8 py-4 rounded-full font-medium text-lg transition-all duration-300">
+                👟 Shoes
+            </button>
+        </nav>
+
+        <!-- Tops Section -->
+        <main>
+        <section id="section-tops" class="converter-section" aria-label="Tops Size Converter">
+            <div class="bg-white rounded-3xl shadow-lg p-12 md:p-16">
+                <h2 class="text-3xl font-light text-gray-800 mb-12 text-center">Size Conversion - Tops</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div>
+                            <label class="block text-lg font-medium text-gray-700 mb-3">Your Size</label>
+                            <input type="text" id="tops-input" class="input-field w-full px-6 py-4 rounded-xl outline-none text-lg" placeholder="e.g: 48, M, 10, L">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-lg font-medium text-gray-700 mb-3">Your Region</label>
+                            <select id="tops-from" class="input-field w-full px-6 py-4 rounded-xl outline-none text-lg">
+                                <option value="eu">🇪🇺 Europe</option>
+                                <option value="us">🇺🇸 United States</option>
+                                <option value="uk">🇬🇧 United Kingdom</option>
+                                <option value="international">🌍 International (XS, S, M, L, XL)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-lg font-medium text-gray-700 mb-3">Gender</label>
+                            <select id="tops-gender" class="input-field w-full px-6 py-4 rounded-xl outline-none text-lg">
+                                <option value="women">Women</option>
+                                <option value="men">Men</option>
+                            </select>
+                        </div>
+                        
+                        <button onclick="convertTops()" class="convert-btn w-full py-5 rounded-xl text-white font-medium text-xl">
+                            Convert Sizes
+                        </button>
+                    </div>
+                    
+                    <div id="tops-results" class="hidden">
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
+                            <h3 class="text-xl font-medium text-gray-800 mb-6">Size Equivalents:</h3>
+                            <div id="tops-output" class="space-y-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottoms Section -->
+        <section id="section-bottoms" class="converter-section hidden" aria-label="Bottoms Size Converter">
+            <div class="bg-white rounded-3xl shadow-lg p-12 md:p-16">
+                <h2 class="text-3xl font-light text-gray-800 mb-12 text-center">Size Conversion - Bottoms</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div>
+                            <label class="block text-lg font-medium text-gray-700 mb-3">Your Size</label>
+                            <input type="text" id="bottoms-input" class="input-field w-full px-6 py-4 rounded-xl outline-none text-lg" placeholder="e.g: 44, 32, M, 12">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-lg font-medium text-gray-700 mb-3">Your Region</label>
+                            <select id="bottoms-from" class="input-field w-full px-6 py-4 rounded-xl outline-none text-lg">
+                                <option value="eu">🇪🇺 Europe</option>
+                                <option value="us">🇺🇸 United States</option>
+                                <option value="uk">🇬🇧 United Kingdom</option>
+                                <option value="international">🌍 International (XS, S, M, L, XL)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-lg font-medium text-gray-700 mb-3">Gender</label>
+                            <select id="bottoms-gender" class="input-field w-full px-6 py-4 rounded-xl outline-none text-lg">
+                                <option value="women">Women</option>
+                                <option value="men">Men</option>
+                            </select>
+                        </div>
+                        
+                        <button onclick="convertBottoms()" class="convert-btn w-full py-5 rounded-xl text-white font-medium text-xl">
+                            Convert Sizes
+                        </button>
+                    </div>
+                    
+                    <div id="bottoms-results" class="hidden">
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8">
+                            <h3 class="text-xl font-medium text-gray-800 mb-6">Size Equivalents:</h3>
+                            <div id="bottoms-output" class="space-y-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shoes Section -->
+        <section id="section-shoes" class="converter-section hidden" aria-label="Shoes Size Converter">
+            <div class="bg-white rounded-3xl shadow-lg p-12 md:p-16">
+                <h2 class="text-3xl font-light text-gray-800 mb-12 text-center">Size Conversion - Shoes</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div>
+                            <label class="block text-lg font-medium text-gray-700 mb-3">Your Size</label>
+                            <input type="text" id="shoes-input" class="input-field w-full px-6 py-4 rounded-xl outline-none text-lg" placeholder="e.g: 42, 9, 26.5">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-lg font-medium text-gray-700 mb-3">Your Region</label>
+                            <select id="shoes-from" class="input-field w-full px-6 py-4 rounded-xl outline-none text-lg">
+                                <option value="eu">🇪🇺 Europe</option>
+                                <option value="us">🇺🇸 United States</option>
+                                <option value="uk">🇬🇧 United Kingdom</option>
+                                <option value="cm">📏 Centimeters</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-lg font-medium text-gray-700 mb-3">Gender</label>
+                            <select id="shoes-gender" class="input-field w-full px-6 py-4 rounded-xl outline-none text-lg">
+                                <option value="men">Men</option>
+                                <option value="women">Women</option>
+                            </select>
+                        </div>
+                        
+                        <button onclick="convertShoes()" class="convert-btn w-full py-5 rounded-xl text-white font-medium text-xl">
+                            Convert Sizes
+                        </button>
+                    </div>
+                    
+                    <div id="shoes-results" class="hidden">
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8">
+                            <h3 class="text-xl font-medium text-gray-800 mb-6">Size Equivalents:</h3>
+                            <div id="shoes-output" class="space-y-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </main>
+
+        <!-- SEO Content Section -->
+        <section class="mt-20 mb-16">
+            <div class="bg-white rounded-3xl shadow-lg p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Why Use Our Size Converter?</h2>
+                        <div class="space-y-4 text-gray-600">
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">✅</span>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Accurate Conversions</h3>
+                                    <p>Based on official sizing standards from EU, US, UK and international brands</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">🌍</span>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Global Coverage</h3>
+                                    <p>Convert between European, American, British and international sizes</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-2xl">⚡</span>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Instant Results</h3>
+                                    <p>Get size conversions immediately - no waiting, no registration required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
+                            <div class="text-6xl mb-4">📏</div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Perfect Fit Guaranteed</h3>
+                            <p class="text-gray-600">Shop with confidence knowing your exact size in any region</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">How accurate are the size conversions?</h3>
+                            <p class="text-gray-600">Our conversions are based on official sizing standards and are accurate for most brands. However, sizes may vary slightly between different manufacturers.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">Can I convert both numeric and letter sizes?</h3>
+                            <p class="text-gray-600">Yes! Our converter automatically detects whether you enter numeric sizes (like 42, 10) or letter sizes (like M, L) and converts accordingly.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">Is this tool free to use?</h3>
+                            <p class="text-gray-600">Absolutely! Our size converter is completely free with no registration required. Use it as many times as you need.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">Which regions are supported?</h3>
+                            <p class="text-gray-600">We support EU (European), US (American), UK (British), and International sizing systems for clothing and footwear.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-20 text-gray-500">
+            <p class="text-lg">© 2025 Size Converter Online - Professional size conversion tool</p>
+        </footer>
+    </div>
+
+    <script>
+        // Enhanced size conversion tables with both numeric and letter sizes
+        const sizeData = {
+            tops: {
+                women: {
+                    eu: { 
+                        // Numeric sizes
+                        32: 'XXS', 34: 'XS', 36: 'S', 38: 'M', 40: 'L', 42: 'XL', 44: 'XXL', 46: 'XXXL',
+                        // Letter sizes for EU
+                        'XXS': 'XXS', 'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    },
+                    us: { 
+                        // Numeric sizes
+                        0: 'XXS', 2: 'XS', 4: 'S', 6: 'M', 8: 'L', 10: 'XL', 12: 'XXL', 14: 'XXXL',
+                        // Letter sizes for US
+                        'XXS': 'XXS', 'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    },
+                    uk: { 
+                        // Numeric sizes
+                        4: 'XXS', 6: 'XS', 8: 'S', 10: 'M', 12: 'L', 14: 'XL', 16: 'XXL', 18: 'XXXL',
+                        // Letter sizes for UK
+                        'XXS': 'XXS', 'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    },
+                    international: { 
+                        'XXS': 'XXS', 'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    }
+                },
+                men: {
+                    eu: { 
+                        // Numeric sizes
+                        44: 'XS', 46: 'S', 48: 'M', 50: 'L', 52: 'XL', 54: 'XXL', 56: 'XXXL',
+                        // Letter sizes for EU
+                        'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    },
+                    us: { 
+                        // Numeric sizes
+                        34: 'XS', 36: 'S', 38: 'M', 40: 'L', 42: 'XL', 44: 'XXL', 46: 'XXXL',
+                        // Letter sizes for US
+                        'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    },
+                    uk: { 
+                        // Numeric sizes
+                        34: 'XS', 36: 'S', 38: 'M', 40: 'L', 42: 'XL', 44: 'XXL', 46: 'XXXL',
+                        // Letter sizes for UK
+                        'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    },
+                    international: { 
+                        'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    }
+                }
+            },
+            bottoms: {
+                women: {
+                    eu: { 
+                        // Numeric sizes
+                        32: 'XXS', 34: 'XS', 36: 'S', 38: 'M', 40: 'L', 42: 'XL', 44: 'XXL', 46: 'XXXL',
+                        // Letter sizes for EU
+                        'XXS': 'XXS', 'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    },
+                    us: { 
+                        // Numeric sizes
+                        0: 'XXS', 2: 'XS', 4: 'S', 6: 'M', 8: 'L', 10: 'XL', 12: 'XXL', 14: 'XXXL',
+                        // Letter sizes for US
+                        'XXS': 'XXS', 'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    },
+                    uk: { 
+                        // Numeric sizes
+                        4: 'XXS', 6: 'XS', 8: 'S', 10: 'M', 12: 'L', 14: 'XL', 16: 'XXL', 18: 'XXXL',
+                        // Letter sizes for UK
+                        'XXS': 'XXS', 'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    },
+                    international: { 
+                        'XXS': 'XXS', 'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL', 'XXL': 'XXL', 'XXXL': 'XXXL'
+                    }
+                },
+                men: {
+                    eu: { 
+                        // Waist sizes
+                        40: 30, 42: 32, 44: 34, 46: 36, 48: 38, 50: 40, 52: 42,
+                        // Letter sizes mapped to waist
+                        'XS': 30, 'S': 32, 'M': 34, 'L': 36, 'XL': 38, 'XXL': 40, 'XXXL': 42
+                    },
+                    us: { 
+                        // Waist sizes
+                        28: 28, 30: 30, 32: 32, 34: 34, 36: 36, 38: 38, 40: 40, 42: 42,
+                        // Letter sizes mapped to waist
+                        'XS': 30, 'S': 32, 'M': 34, 'L': 36, 'XL': 38, 'XXL': 40, 'XXXL': 42
+                    },
+                    uk: { 
+                        // Waist sizes
+                        28: 28, 30: 30, 32: 32, 34: 34, 36: 36, 38: 38, 40: 40, 42: 42,
+                        // Letter sizes mapped to waist
+                        'XS': 30, 'S': 32, 'M': 34, 'L': 36, 'XL': 38, 'XXL': 40, 'XXXL': 42
+                    },
+                    international: { 
+                        'XS': 30, 'S': 32, 'M': 34, 'L': 36, 'XL': 38, 'XXL': 40, 'XXXL': 42
+                    }
+                }
+            },
+            shoes: {
+                men: {
+                    eu: { 39: 24.5, 40: 25, 41: 26, 42: 26.5, 43: 27.5, 44: 28, 45: 29, 46: 30 },
+                    us: { 6: 24.5, 7: 25, 8: 26, 9: 26.5, 10: 27.5, 11: 28, 12: 29, 13: 30 },
+                    uk: { 5.5: 24.5, 6: 25, 7: 26, 8: 26.5, 9: 27.5, 10: 28, 11: 29, 12: 30 },
+                    cm: { 24.5: 24.5, 25: 25, 26: 26, 26.5: 26.5, 27.5: 27.5, 28: 28, 29: 29, 30: 30 }
+                },
+                women: {
+                    eu: { 36: 23, 37: 23.5, 38: 24, 39: 24.5, 40: 25, 41: 26, 42: 26.5, 43: 27.5 },
+                    us: { 5.5: 23, 6: 23.5, 6.5: 24, 7: 24.5, 7.5: 25, 8: 26, 8.5: 26.5, 9: 27.5 },
+                    uk: { 3.5: 23, 4: 23.5, 4.5: 24, 5: 24.5, 5.5: 25, 6: 26, 6.5: 26.5, 7: 27.5 },
+                    cm: { 23: 23, 23.5: 23.5, 24: 24, 24.5: 24.5, 25: 25, 26: 26, 26.5: 26.5, 27.5: 27.5 }
+                }
+            }
+        };
+
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.converter-section').forEach(s => s.classList.add('hidden'));
+            
+            // Show selected section
+            document.getElementById(`section-${section}`).classList.remove('hidden');
+            
+            // Update tabs
+            document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+                tab.className = 'tab-inactive px-6 py-3 rounded-full font-medium transition-all duration-300';
+            });
+            document.getElementById(`tab-${section}`).className = 'tab-active px-6 py-3 rounded-full font-medium transition-all duration-300';
+        }
+
+        function convertTops() {
+            const input = document.getElementById('tops-input').value.trim().toUpperCase();
+            const fromRegion = document.getElementById('tops-from').value;
+            const gender = document.getElementById('tops-gender').value;
+            const resultsDiv = document.getElementById('tops-results');
+            const outputDiv = document.getElementById('tops-output');
+            
+            if (!input) return;
+            
+            let results = [];
+            let inputValue = isNaN(input) ? input : parseFloat(input);
+            
+            // Find the equivalent letter size from the input
+            let letterSize = '';
+            if (sizeData.tops[gender][fromRegion].hasOwnProperty(inputValue)) {
+                letterSize = sizeData.tops[gender][fromRegion][inputValue];
+            } else {
+                return; // Size not found
+            }
+            
+            // Convert to all other regions
+            Object.keys(sizeData.tops[gender]).forEach(region => {
+                if (region !== fromRegion) {
+                    Object.keys(sizeData.tops[gender][region]).forEach(size => {
+                        if (sizeData.tops[gender][region][size] === letterSize) {
+                            const regionName = {
+                                'eu': '🇪🇺 Europe',
+                                'us': '🇺🇸 United States',
+                                'uk': '🇬🇧 United Kingdom',
+                                'international': '🌍 International'
+                            }[region];
+                            results.push(`<div class="flex justify-between items-center"><span class="font-medium text-lg">${regionName}:</span><span class="text-2xl font-bold text-indigo-600">${size}</span></div>`);
+                        }
+                    });
+                }
+            });
+            
+            outputDiv.innerHTML = results.join('');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('result-animation');
+        }
+
+        function convertBottoms() {
+            const input = document.getElementById('bottoms-input').value.trim().toUpperCase();
+            const fromRegion = document.getElementById('bottoms-from').value;
+            const gender = document.getElementById('bottoms-gender').value;
+            const resultsDiv = document.getElementById('bottoms-results');
+            const outputDiv = document.getElementById('bottoms-output');
+            
+            if (!input) return;
+            
+            let results = [];
+            let inputValue = isNaN(input) ? input : parseFloat(input);
+            
+            if (gender === 'women') {
+                // Women's bottoms use letter size conversion
+                let letterSize = '';
+                if (sizeData.bottoms[gender][fromRegion].hasOwnProperty(inputValue)) {
+                    letterSize = sizeData.bottoms[gender][fromRegion][inputValue];
+                } else {
+                    return; // Size not found
+                }
+                
+                // Convert to all other regions
+                Object.keys(sizeData.bottoms[gender]).forEach(region => {
+                    if (region !== fromRegion) {
+                        Object.keys(sizeData.bottoms[gender][region]).forEach(size => {
+                            if (sizeData.bottoms[gender][region][size] === letterSize) {
+                                const regionName = {
+                                    'eu': '🇪🇺 Europe',
+                                    'us': '🇺🇸 United States',
+                                    'uk': '🇬🇧 United Kingdom',
+                                    'international': '🌍 International'
+                                }[region];
+                                results.push(`<div class="flex justify-between items-center"><span class="font-medium text-lg">${regionName}:</span><span class="text-2xl font-bold text-green-600">${size}</span></div>`);
+                            }
+                        });
+                    }
+                });
+            } else {
+                // Men's bottoms use waist size conversion
+                let waistSize = '';
+                if (sizeData.bottoms[gender][fromRegion].hasOwnProperty(inputValue)) {
+                    waistSize = sizeData.bottoms[gender][fromRegion][inputValue];
+                } else {
+                    return; // Size not found
+                }
+                
+                // Convert to all other regions
+                Object.keys(sizeData.bottoms[gender]).forEach(region => {
+                    if (region !== fromRegion) {
+                        Object.keys(sizeData.bottoms[gender][region]).forEach(size => {
+                            if (sizeData.bottoms[gender][region][size] === waistSize) {
+                                const regionName = {
+                                    'eu': '🇪🇺 Europe',
+                                    'us': '🇺🇸 United States',
+                                    'uk': '🇬🇧 United Kingdom',
+                                    'international': '🌍 International'
+                                }[region];
+                                results.push(`<div class="flex justify-between items-center"><span class="font-medium text-lg">${regionName}:</span><span class="text-2xl font-bold text-green-600">${size}</span></div>`);
+                            }
+                        });
+                    }
+                });
+            }
+            
+            outputDiv.innerHTML = results.join('');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('result-animation');
+        }
+
+        function convertShoes() {
+            const input = document.getElementById('shoes-input').value.trim();
+            const fromRegion = document.getElementById('shoes-from').value;
+            const gender = document.getElementById('shoes-gender').value;
+            const resultsDiv = document.getElementById('shoes-results');
+            const outputDiv = document.getElementById('shoes-output');
+            
+            if (!input) return;
+            
+            let results = [];
+            let inputValue = parseFloat(input);
+            
+            // Find equivalent CM size first
+            let cmSize = '';
+            if (fromRegion === 'cm') {
+                cmSize = inputValue;
+            } else {
+                Object.keys(sizeData.shoes[gender][fromRegion]).forEach(size => {
+                    if (parseFloat(size) === inputValue) {
+                        cmSize = sizeData.shoes[gender][fromRegion][size];
+                    }
+                });
+            }
+            
+            if (!cmSize) return; // Size not found
+            
+            // Convert to all other regions
+            Object.keys(sizeData.shoes[gender]).forEach(region => {
+                if (region !== fromRegion) {
+                    Object.keys(sizeData.shoes[gender][region]).forEach(size => {
+                        if (sizeData.shoes[gender][region][size] === cmSize) {
+                            const regionName = {
+                                'eu': '🇪🇺 Europe',
+                                'us': '🇺🇸 United States',
+                                'uk': '🇬🇧 United Kingdom',
+                                'cm': '📏 Centimeters'
+                            }[region];
+                            results.push(`<div class="flex justify-between items-center"><span class="font-medium text-lg">${regionName}:</span><span class="text-2xl font-bold text-purple-600">${size}</span></div>`);
+                        }
+                    });
+                }
+            });
+            
+            outputDiv.innerHTML = results.join('');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('result-animation');
+        }
+
+        // Add Enter key support for inputs
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('tops-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') convertTops();
+            });
+            
+            document.getElementById('bottoms-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') convertBottoms();
+            });
+            
+            document.getElementById('shoes-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') convertShoes();
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'985de53972301ba3',t:'MTc1OTAwNjQ1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
